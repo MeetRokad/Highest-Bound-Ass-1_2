@@ -1,0 +1,56 @@
+//Time complexity=O(n)
+//Space Complexity=O(1)
+import java.util.*;
+
+class que2 
+{
+    public static int finalLastOccurence(int []a,int target)
+    {
+        int low=0;
+        int high=a.length-1;
+        int result=-1;
+
+       while(low<=high)
+       {
+            int mid=low+(high-low)/2;
+
+            if(a[mid]==target)
+            {
+                result=mid;
+
+                low=mid+1;
+            }
+            else if(a[mid]>target)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+       }
+       return result;
+    }
+        public static void main(String []args)
+        {
+            Scanner sc=new Scanner(System.in);
+
+            System.out.print("Enter the number of element in the Array : ");
+            int n=sc.nextInt();
+    
+            int a[]=new int[n];
+            System.out.print("Enter element of the Array : ");
+            for(int i=0;i<n;i++)
+            {
+                a[i]=sc.nextInt();
+            }
+    
+            System.out.print("Enter the target element : ");
+            int target=sc.nextInt();
+
+            int result=finalLastOccurence(a,target);
+            
+            System.out.println(+result);
+        }
+
+}
